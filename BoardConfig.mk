@@ -76,14 +76,14 @@ BOARD_USE_LEGACY_TOUCHSCREEN := true
 TARGET_PROVIDES_POWER_HAL := true
 
 # Kernel
-#TARGET_KERNEL_SOURCE := kernel/samsung/corsica
-#TARGET_KERNEL_CONFIG := cyanogenmod_corsica_defconfig
-TARGET_PREBUILT_KERNEL := device/samsung/corsica/kernel
+TARGET_KERNEL_SOURCE := kernel/samsung/corsica
+TARGET_KERNEL_CONFIG := cyanogenmod_corsica_defconfig
 BOARD_KERNEL_CMDLINE := console=ttyS0,115200n8 mem=456M androidboot.console=ttyS0 gpt v3d_mem=67108864 pmem=24M@0x9E800000
 BOARD_KERNEL_BASE := 0x82000000
 BOARD_KERNEL_PAGESIZE := 4096
 
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_EXTERNAL_APPS = sdcard1
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8388608
@@ -117,7 +117,6 @@ BOARD_WLAN_DEVICE_REV       := bcm4330
 WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/dhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA     := "/system/etc/wifi/bcmdhd_sta.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/system/etc/wifi/bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P     := "/system/etc/wifi/bcmdhd_p2p.bin_b2"
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/dhd.ko"
 WIFI_DRIVER_MODULE_NAME     := "dhd"
 WIFI_DRIVER_MODULE_ARG      := "firmware_path=/system/etc/wifi/bcmdhd_sta.bin nvram_path=/system/etc/wifi/nvram_net.txt"
@@ -138,7 +137,7 @@ BOARD_EGL_WORKAROUND_BUG_10194508 := true
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 BOARD_EGL_NEEDS_FNW := true
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
-COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB -DEGL_NEEDS_FNW -DMR0_AUDIO_BLOB -DSAMSUNG_BCM_AUDIO_BLOB -DRHEA_HWC -DSAMSUNG_BCM_AUDIO_BLOB -DRHEA_HWC
+COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB -DEGL_NEEDS_FNW -DMR0_AUDIO_BLOB -DSAMSUNG_BCM_AUDIO_BLOB -DCAPRI_HWC -DSAMSUNG_BCM_AUDIO_BLOB
 OVERRIDE_RS_DRIVER := libRSDriverArm_rhea.so
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 BOARD_USES_HW_MEDIARECORDER := true
@@ -185,9 +184,3 @@ BOARD_SEPOLICY_DIRS += \
 
 BOARD_SEPOLICY_UNION += \
     file_contexts \
-    surfaceflinger.te \
-    init.te \
-    shell.te \
-    netd.te \
-    device.te \
-    rild.te \ 

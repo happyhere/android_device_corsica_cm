@@ -16,12 +16,6 @@ PRODUCT_AAPT_PREF_CONFIG := ldpi
 TARGET_SCREEN_HEIGHT := 320
 TARGET_SCREEN_WIDTH := 240
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/samsung/corsica/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
 # Init files
 PRODUCT_COPY_FILES += \
 	device/samsung/corsica/recovery/init.rhea_ss_corsica.rc:root/init.rhea_ss_corsica.rc \
@@ -33,12 +27,8 @@ PRODUCT_COPY_FILES += \
 	device/samsung/corsica/recovery/fstab.rhea_ss_corsica:root/fstab.rhea_ss_corsica 
 
 PRODUCT_COPY_FILES += \
-        frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
-        frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-        frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
-        frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
         device/samsung/corsica/prebuilt/media_codecs.xml:system/etc/media_codecs.xml \
-        device/samsung/corsica/prebuilt/media_profiles.xml:system/etc/media_profiles.xml \
+        device/samsung/corsica/prebuilt/media_profiles.xml:system/etc/media_profiles.xml
 
 # Prebuilt kl keymaps
 PRODUCT_COPY_FILES += \
@@ -47,7 +37,7 @@ PRODUCT_COPY_FILES += \
 	device/samsung/corsica/keylayouts/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
 	device/samsung/corsica/keylayouts/Generic.kl:system/usr/keylayout/Generic.kl \
 	device/samsung/corsica/keylayouts/samsung-keypad.kl:system/usr/keylayout/samsung-keypad.kl \
-        device/samsung/corsica/keylayouts/lpm.rc:root/lpm.rc \
+        device/samsung/corsica/keylayouts/lpm.rc:root/lpm.rc
 
 # Stagefright
 PRODUCT_PROPERTY_OVERRIDES += \
